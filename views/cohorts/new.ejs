@@ -1,9 +1,34 @@
 <%- include('../partials/header') %> 
-  <main class="container">
-    <form action="/cohorts" method="POST">
-      <label for="cohort">Placerholder Form</label>
-      <input type="textarea" id="cohort" name="testerfield" placeholder="Gabriel, Joanne, Sheelove">
-      <button type="submit">Create Cohort</button>
-    </form>
-  </main>
+<form class="container" action="/cohorts" method="POST">
+  <div class="form-group">
+    <label for="logo_url">Logo Url</label>
+    <input 
+      type="url" 
+      class="form-control" 
+      id="logo_url"
+      name="logo_url"
+      placeholder="https://whatever.com/apicture.jpeg">
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      id="name"
+      name="name"
+      placeholder="Flying Funks">
+  </div>
+  <div class="form-group">
+    <label for="members">Members</label>
+    <textarea 
+      class="form-control" 
+      id="members"
+      name="members"
+      rows="5"
+      placeholder="Tony Stark, Cap, Winter Soldier, Dr. Strange, Hulk"></textarea>
+  </div>
+  <button type="submit" class="btn btn-outline-primary float-right">Submit</button>
+
+</form>
+
 <%- include('../partials/footer') %> 

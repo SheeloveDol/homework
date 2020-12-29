@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
 
 
 // Create
-router.post('/', (req, res) => {
+router.post('/show', (req, res) => {
   res.redirect('/cohorts/:id'); // May have to change this to ('/:id') if it doesn't work 
 })
 
