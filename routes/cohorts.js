@@ -3,12 +3,14 @@ const router = express.Router();
 
 // Index
 router.get('/', (req, res) => {
-  res.send('<h1>Index Page inside cohorts</h1>');
+  // res.send('<h1>Index Page inside cohorts</h1>');
+  res.render('cohorts/index');
 });
 
 // New Cohort form
 router.get('/new', (req, res) => {
-  res.send('<h1>Create New Cohort Page');
+  // res.send('<h1>Create New Cohort Page');
+  res.render('cohorts/new');
 });
 
 // Individual Cohort
