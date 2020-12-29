@@ -1,3 +1,16 @@
 <%- include('../partials/header') %> 
-  <h1>INDEX Page inside own cohorts view</h1>
+
+<main class="container">
+  <% for (let cohort of cohorts) { %> 
+    <div class="card mb-4" style="width: 100%;">
+      <img class="rounded-circle" src="..." alt="100x100" data-holder-rendered="true">
+      <div class="card-body">
+        <h5 class="card-title"><%= cohort.name %> </h5>
+        <p class="card-text">cohort.members</p>
+        <a href="#" class="btn btn-primary">Show Cohort</a> <!-- come back to do button link-->
+      </div>
+    </div>
+  <% } %>   
+</main>
+
 <%- include('../partials/footer') %> 
