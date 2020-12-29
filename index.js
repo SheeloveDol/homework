@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const path = require('path');
 
 app.set('view engine', 'ejs'); 
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'))
+app.use(express.urlencoded({ extended: true }));
+
 
 // tester route
 app.get('/', (req, res) => {
