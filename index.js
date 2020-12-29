@@ -12,9 +12,14 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // tester route
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World</h1>');
-});
+// app.get('/', (req, res) => {
+//   res.send('<h1>Hello World</h1>');
+// });
+
+
+// Importer 'cohorts' router
+const cohortsRouter = require('./routes/cohorts');
+app.use('/cohorts', cohortsRouter);
 
 
 const ADDRESS = 'localhost';
