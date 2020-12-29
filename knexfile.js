@@ -3,9 +3,17 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'pg', //changed from 'sqlite3'
     connection: {
-      filename: './dev.sqlite3'
+      database: 'superteam_picker', // changed from  filename: './dev.sqlite3' 
+    },
+    //added the following:
+    migrations: {
+      tableName: 'migrations',
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds'
     }
   },
 
