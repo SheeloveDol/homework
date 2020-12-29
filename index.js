@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const logger = require('morgan');
 
+app.set('view engine', 'ejs'); 
+
 app.use(logger('dev'))
 
 // tester route
