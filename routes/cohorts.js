@@ -17,10 +17,21 @@ router.get('/new', (req, res) => {
   res.render('cohorts/new');
 });
 
-// Individual Cohort
 router.get('/:id', (req, res) => {
-  res.send('<h1>Individual Cohort Page</h1>');
+  // res.send(req.params);
+
+  knex('cohorts')
+    .where('id', req.params.id)
+    .first() // Built-in knex method that returns the first record of the array of records from a query.
+    .then(cohort => {
+      res.render('cohorts/show', { cohort:cohort });
+    });
 });
+
+// Individual Cohort
+// router.get('/:id', (req, res) => {
+//   res.send('<h1>Individual Cohort Page</h1>');
+// });
 
 
 // Create

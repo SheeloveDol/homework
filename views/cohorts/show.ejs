@@ -1,0 +1,42 @@
+<%- include('../partials/header') %> 
+<main class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title"><%= cohort.name %> </h3>
+      <%= cohort.members %> 
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h6 class="cart-title">Method</h6>
+      
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="choice" id="team_count" value="team_count" >
+        <label class="form-check-label" for="team_count">
+          Team Count
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="choice" id="number_per_team" value="number_per_team" >
+        <label class="form-check-label" for="number_per_team">
+          Number Per Team
+        </label>
+      </div>
+      <br>
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="text" class="form-control" id="quantity" >
+          </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-primary btn-lg btn-block">Assign Teams</button>
+      </div>
+
+    </div>
+  </div>
+</main>
+<%- include('../partials/footer') %> 
+
