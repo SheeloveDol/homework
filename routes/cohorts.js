@@ -17,6 +17,8 @@ router.get('/new', (req, res) => {
   res.render('cohorts/new');
 });
 
+
+
 router.get('/:id', (req, res) => {
   // res.send(req.params);
 
@@ -28,10 +30,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Individual Cohort
-// router.get('/:id', (req, res) => {
-//   res.send('<h1>Individual Cohort Page</h1>');
-// });
 
 
 // Create
@@ -49,6 +47,11 @@ router.post('/', (req, res) => {
       res.redirect('/cohorts');
     })
    // May have to change this to ('/:id') if it doesn't work 
+})
+
+router.post('/:id', (req, res) => {
+  res.redirect('/:id');
+  // res.send(req.body)
 })
 
 // Destroy
