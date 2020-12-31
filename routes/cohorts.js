@@ -2,7 +2,7 @@ const express = require('express');
 const knex = require('../db/client');
 const router = express.Router();
 
-// Index
+//! Index
 router.get('/', (req, res) => {
   knex('cohorts')
     .orderBy('created_at', 'desc')
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// New Cohort form
+//! New Cohort form
 router.get('/new', (req, res) => {
   // res.send('<h1>Create New Cohort Page');
   res.render('cohorts/new');
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
 
 
 
-// Create
+//! Create
 router.post('/', (req, res) => {
   knex('cohorts')
     .insert({
@@ -54,7 +54,19 @@ router.post('/:id', (req, res) => {
   // res.send(req.body)
 })
 
-// Destroy
+
+//! EDIT
+router.get('/:id/edit', (req, res) => {
+  knex('cohorts')
+    .where('id', req.params.id)
+    .first()
+    .then(cohort => {
+      res.render('cohorts/edit', { cohort: cohort})
+    });
+});
+
+
+//! DESTROY
 router.delete('/:id', (req, res) => {
   knex('cohorts')
     .where('id', req.params.id)
