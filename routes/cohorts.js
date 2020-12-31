@@ -26,7 +26,11 @@ router.get('/:id', (req, res) => {
     .where('id', req.params.id)
     .first() // Built-in knex method that returns the first record of the array of records from a query.
     .then(cohort => {
-      res.render('cohorts/show', { cohort:cohort });
+      if (!cohort) {
+        res.send('No such cohort found!')
+      } else {
+        res.render('cohorts/show', { cohort:cohort });
+      }
     });
 });
 
@@ -62,6 +66,20 @@ router.get('/:id/edit', (req, res) => {
     .first()
     .then(cohort => {
       res.render('cohorts/edit', { cohort: cohort})
+    });
+});
+
+//! UPDATE
+router.patch('/:id', (req, res) => {
+  knex('cohorts')
+    .where('id', req.params.id)
+    .update({
+      logo_url: req.body.logo_url,
+      name: req.body.name,
+      members: req.body.members
+    })
+    .then(() => {
+      res.redirect(`/cohorts/${req.params.id}`);
     });
 });
 
