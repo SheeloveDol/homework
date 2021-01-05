@@ -1,12 +1,12 @@
 <%- include('../partials/header') %> 
 <main class="container">
+  <form action="/cohorts/<%= cohort.id %> " method="POST"  >
   <div class="card">
     <div class="card-body">
       <h3 class="card-title"><%= cohort.name %> </h3>
       <%= cohort.members %> 
     </div>
   </div>
-  <form action="/cohorts/<%= cohort.id %> " method="POST" >
     <div class="card">
       <div class="card-body">
         <h6 class="cart-title">Method</h6>
@@ -32,27 +32,31 @@
         <div>
           <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Assign Teams</button>
         </div>
-
-        <br>
-
-        <form action="/cohorts/<%= cohort.id %> " method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" class="btn btn-outline-danger btn-lg btn-block" value="Delete">
-        </form>
-
-        <br>
-
-        <form action="<%= cohort.id %>/edit " >
-          <input type="submit" class="btn btn-outline-warning btn-lg btn-block" value="Edit">
-        </form>
-
       </div>
     </div>
   </form>
-  
+
+
+  <form action="<%= cohort.id %>/edit " >
+    <div class="card">
+      <div class="card-body">
+        <input type="submit" class="btn btn-outline-warning btn-lg btn-block" value="Edit">
+      </div>
+    </div> 
+  </form>
+
+  <form action="/cohorts/<%= cohort.id %> " method="POST">
+    <div class="card">
+      <div class="card-body">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-outline-danger btn-lg btn-block" value="Delete">
+      </div>
+    </div>
+  </form>
  
-
-
+  <% if (team_count) { %> 
+    <h1><%= team_count %> </h1>
+<% } %> 
 </main>
 <%- include('../partials/footer') %> 
 

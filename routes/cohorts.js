@@ -18,7 +18,7 @@ router.get('/new', (req, res) => {
 });
 
 
-
+//! Show cohort
 router.get('/:id', (req, res) => {
   // res.send(req.params);
 
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
       if (!cohort) {
         res.send('No such cohort found!')
       } else {
-        res.render('cohorts/show', { cohort:cohort });
+        res.render('cohorts/show', { team_count: false, cohort:cohort });
       }
     });
 });
@@ -54,8 +54,21 @@ router.post('/', (req, res) => {
 })
 
 router.post('/:id', (req, res) => {
-  res.redirect('/:id');
-  // res.send(req.body)
+  // res.redirect('/show');
+  console.log(req.params.id);
+
+  knex('cohorts')
+    .where('id', req.params.id)
+    .first() // Built-in knex method that returns the first record of the array of records from a query.
+    .then(cohort => {
+      if (!cohort) {
+        res.send('No such cohort found!')
+      } else {
+        res.render('cohorts/show', { team_count: false, cohort:cohort });
+      }
+    });
+  
+  // res.render('cohorts/show', { cohort: false, members: req.body.members, team_count: req.body.members});
 })
 
 
